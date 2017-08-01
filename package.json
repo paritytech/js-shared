@@ -13,7 +13,9 @@
   },
   "keywords": [],
   "scripts": {},
-  "devDependencies": {},
+  "devDependencies": {
+      "serviceworker-webpack-plugin": "0.2.0"
+  },
   "dependencies": {
     "mobx": "2.6.4",
     "mobx-react": "4.0.3",
@@ -24,7 +26,10 @@
     "redux-thunk": "2.1.0",
     "scryptsy": "2.0.0",
     "solc": "ngotchac/solc-js",
-    "yargs": "6.6.0"
+    "yargs": "6.6.0",
+    "loglevel": "1.4.1",
+    "worker-loader": "^0.8.0",
+    "promise-worker": "1.1.1"
   },
   "peerDependencies": {}
 }
