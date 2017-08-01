@@ -16,7 +16,7 @@
   "devDependencies": {
   },
   "dependencies": {
-    "@parity/ledger":"paritytech/js-ledger#dda174f5dfbca4df33363e81bb73e0940066ac5a",
+    "@parity/ledger":"paritytech/js-ledger#c363adfb9192aa56b7b498b0ad90bc4032bcd6ab",
     "mobx": "2.6.4",
     "mobx-react": "4.0.3",
     "push.js": "0.0.11",
