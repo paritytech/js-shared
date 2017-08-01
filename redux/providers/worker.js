@@ -14,12 +14,18 @@
 // You should have received a copy of the GNU General Public License
 // along with Parity.  If not, see <http://www.gnu.org/licenses/>.
 
+let runtime = null;
+
 import PromiseWorker from 'promise-worker';
-import runtime from 'serviceworker-webpack-plugin/lib/runtime';
 
 import WebWorker from 'worker-loader!../../webWorker.js';
 
 import { setWorker } from './workerActions';
+
+try {
+  runtime = require('serviceworker-webpack-plugin/lib/runtime');
+} catch (error) {
+}
 
 // Setup the Service Worker
 setupServiceWorker()
@@ -27,7 +33,7 @@ setupServiceWorker()
   .catch((error) => console.error('SW error', error));
 
 function setupServiceWorker () {
-  if (!('serviceWorker' in navigator)) {
+  if (!('serviceWorker' in navigator) || !runtime) {
     return Promise.reject('Service Worker is not available in your browser.');
   }
 
