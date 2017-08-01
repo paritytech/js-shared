@@ -26,6 +26,7 @@
     "redux-thunk": "2.1.0",
     "scryptsy": "2.0.0",
     "solc": "ngotchac/solc-js",
+    "sw-toolbox": "^3.6.0",
     "yargs": "6.6.0",
     "loglevel": "1.4.1",
     "worker-loader": "^0.8.0",
