@@ -29,8 +29,10 @@
     "yargs": "6.6.0",
     "loglevel": "1.4.1",
     "worker-loader": "^0.8.0",
-    "promise-worker": "1.1.1",
-    "serviceworker-webpack-plugin": "0.2.0"
+    "promise-worker": "1.1.1"
   },
-  "peerDependencies": {}
+  "peerDependencies": {},
+  "optionalDependencies": {
+    "serviceworker-webpack-plugin": "0.2.0"
+  }
 }
