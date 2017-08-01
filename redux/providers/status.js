@@ -18,9 +18,7 @@ import { isEqual } from 'lodash';
 
 import { LOG_KEYS, getLogger } from '@parity/shared/config';
 
-// FIXME: We should not import from shell
-import UpgradeStore from '~/src/UpgradeParity/store';
-
+import UpgradeStore from '../../mobx/upgradeParity';
 import { isTestnet } from '../../util/testnet';
 
 import BalancesProvider from './balances';
