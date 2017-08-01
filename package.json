@@ -14,9 +14,9 @@
   "keywords": [],
   "scripts": {},
   "devDependencies": {
-      "serviceworker-webpack-plugin": "0.2.0"
   },
   "dependencies": {
+    "@parity/ledger":"paritytech/js-ledger#c363adfb9192aa56b7b498b0ad90bc4032bcd6ab",
     "mobx": "2.6.4",
     "mobx-react": "4.0.3",
     "push.js": "0.0.11",
@@ -29,7 +29,8 @@
     "yargs": "6.6.0",
     "loglevel": "1.4.1",
     "worker-loader": "^0.8.0",
-    "promise-worker": "1.1.1"
+    "promise-worker": "1.1.1",
+    "serviceworker-webpack-plugin": "0.2.0"
   },
   "peerDependencies": {}
 }
