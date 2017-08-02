@@ -13,10 +13,9 @@
   },
   "keywords": [],
   "scripts": {},
-  "devDependencies": {
-  },
+  "devDependencies": {},
   "dependencies": {
-    "@parity/ledger":"paritytech/js-ledger",
+    "@parity/ledger": "paritytech/js-ledger",
     "mobx": "2.6.4",
     "mobx-react": "4.0.3",
     "push.js": "0.0.11",
