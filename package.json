@@ -16,8 +16,11 @@
   "devDependencies": {},
   "dependencies": {
     "@parity/ledger": "paritytech/js-ledger",
+    "eventemitter3": "^2.0.3",
+    "loglevel": "1.4.1",
     "mobx": "2.6.4",
     "mobx-react": "4.0.3",
+    "promise-worker": "1.1.1",
     "push.js": "0.0.11",
     "react-redux": "4.4.6",
     "redux": "3.6.0",
@@ -26,10 +29,9 @@
     "scryptsy": "2.0.0",
     "solc": "ngotchac/solc-js",
     "sw-toolbox": "^3.6.0",
-    "yargs": "6.6.0",
-    "loglevel": "1.4.1",
+    "useragent.js": "^0.5.6",
     "worker-loader": "^0.8.0",
-    "promise-worker": "1.1.1"
+    "yargs": "6.6.0"
   },
   "peerDependencies": {},
   "optionalDependencies": {
