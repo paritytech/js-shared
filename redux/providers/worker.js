@@ -91,7 +91,7 @@ export const setupWorker = (store) => {
       dispatch(setWorker(worker));
     })
     .catch((error) => {
-      console.error('setupWorker', error);
+      console.warn('setupWorker', error);
       dispatch(setWorker(null));
     });
 };
