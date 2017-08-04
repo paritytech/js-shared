@@ -14,27 +14,22 @@
 // You should have received a copy of the GNU General Public License
 // along with Parity.  If not, see <http://www.gnu.org/licenses/>.
 
-let runtime = null;
-
-import PromiseWorker from 'promise-worker';
-
-import WebWorker from 'worker-loader!../../webWorker.js';
-
 import { setWorker } from './workerActions';
 
+let runtime = null;
+let PromiseWorker = null;
+let WebWorker = null;
+
 try {
+  PromiseWorker = require('promise-worker');
+  WebWorker = require('worker-loader!../../webWorker.js');
   runtime = require('serviceworker-webpack-plugin/lib/runtime');
 } catch (error) {
 }
 
-// Setup the Service Worker
-setupServiceWorker()
-  .then(() => console.log('SW is setup'))
-  .catch((error) => console.error('SW error', error));
-
 function setupServiceWorker () {
   if (!('serviceWorker' in navigator) || !runtime) {
-    return Promise.reject('Service Worker is not available in your browser.');
+    return Promise.reject('ServiceWorker is not available in your browser.');
   }
 
   const getServiceWorker = () => {
@@ -51,7 +46,7 @@ function setupServiceWorker () {
   return new Promise((resolve, reject) => {
     // Safe guard for registration bugs (happens in Chrome sometimes)
     const timeoutId = window.setTimeout(() => {
-      console.warn('could not register SW after 2.5s');
+      console.warn('could not register ServiceWorker after 2.5s');
       getServiceWorker().then(resolve).catch(reject);
     }, 2500);
 
@@ -95,3 +90,8 @@ export const setupWorker = (store) => {
       dispatch(setWorker(null));
     });
 };
+
+// Setup the Service Worker
+setupServiceWorker()
+  .then(() => console.log('ServiceWorker is setup'))
+  .catch((error) => console.warn('ServiceWorker error', error));

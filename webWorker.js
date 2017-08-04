@@ -14,14 +14,19 @@
 // You should have received a copy of the GNU General Public License
 // along with Parity.  If not, see <http://www.gnu.org/licenses/>.
 
-import registerPromiseWorker from 'promise-worker/register';
-
 import { Signer } from '@parity/shared/util/signer';
 import SolidityUtils from '@parity/shared/util/solidity';
 
-registerPromiseWorker((msg) => {
-  return handleMessage(msg);
-});
+let registerPromiseWorker = null;
+
+try {
+  registerPromiseWorker = require('promise-worker/register');
+
+  registerPromiseWorker((msg) => {
+    return handleMessage(msg);
+  });
+} catch (error) {
+}
 
 self.compiler = {
   version: null,
