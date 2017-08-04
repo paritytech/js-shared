@@ -14,6 +14,7 @@
 // You should have received a copy of the GNU General Public License
 // along with Parity.  If not, see <http://www.gnu.org/licenses/>.
 
+// FIXME: This should be move to dapp-develop
 import { setWorker } from './workerActions';
 
 let runtime = null;
