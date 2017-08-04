@@ -14,9 +14,9 @@
 // You should have received a copy of the GNU General Public License
 // along with Parity.  If not, see <http://www.gnu.org/licenses/>.
 
-// FIXME: These should be move to dapp-develop
-import { Signer } from '@parity/shared/util/signer';
-import SolidityUtils from '@parity/shared/util/solidity';
+// FIXME: These should be move to dapp-develop (needs redux actions)
+import { Signer } from './util/signer';
+import SolidityUtils from './util/solidity';
 
 let registerPromiseWorker = null;
 
