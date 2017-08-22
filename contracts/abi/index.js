@@ -17,9 +17,11 @@
 export badgereg from './badgereg.json';
 export basiccoin from './basiccoin.json';
 export basiccoinmanager from './basiccoinmanager.json';
+export consensysWallet from './consensys-multisig-wallet.json';
 export dappreg from './dappreg.json';
 export eip20 from './eip20.json';
 export emailverification from './email-verification.json';
+export foundationWallet from './foundation-multisig-wallet.json';
 export gavcoin from './gavcoin.json';
 export githubhint from './githubhint.json';
 export owned from './owned.json';
@@ -28,4 +30,3 @@ export registry2 from './registry2.json';
 export signaturereg from './signaturereg.json';
 export smsverification from './sms-verification.json';
 export tokenreg from './tokenreg.json';
-export wallet from './wallet.json';
