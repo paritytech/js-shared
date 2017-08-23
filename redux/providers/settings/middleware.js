@@ -16,7 +16,7 @@
 
 import store from 'store';
 
-import defaultViews from '@parity/shared/config/defaultViews';
+import defaultViews from '../../../config/defaultViews';
 
 function initBackground (store, api) {
   const backgroundSeed = loadBackground() || api.util.sha3(`${Date.now()}`);

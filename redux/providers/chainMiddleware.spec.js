@@ -16,7 +16,7 @@
 
 import sinon from 'sinon';
 
-import Contracts from '@parity/shared/contracts';
+import Contracts from '../../contracts';
 
 import { initialState as defaultNodeStatusState } from './statusReducer';
 import ChainMiddleware from './chainMiddleware';

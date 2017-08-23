@@ -17,9 +17,9 @@
 import * as actions from './signerActions';
 
 import { inHex } from '@parity/api/format/input';
-import HardwareStore from '@parity/shared/mobx/hardwareStore';
-import { Signer } from '@parity/shared/util/signer';
 
+import HardwareStore from '../../mobx/hardwareStore';
+import { Signer } from '../../util/signer';
 import { createSignedTx } from '../../util/qrscan';
 
 export default class SignerMiddleware {

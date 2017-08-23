@@ -16,7 +16,7 @@
 
 import { handleActions } from 'redux-actions';
 
-import views from '@parity/shared/config/defaultViews';
+import views from '../../../config/defaultViews';
 
 const initialState = {
   views,

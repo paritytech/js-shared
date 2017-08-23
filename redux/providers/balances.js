@@ -17,7 +17,8 @@
 import { throttle } from 'lodash';
 
 import { padRight } from '@parity/api/util/format';
-import Contracts from '@parity/shared/contracts';
+
+import Contracts from '../../contracts';
 
 import { fetchBalances, fetchTokensBalances, queryTokensFilter } from './balancesActions';
 import { loadTokens, fetchTokens } from './tokensActions';

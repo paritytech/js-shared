@@ -16,8 +16,7 @@
 
 import { isEqual } from 'lodash';
 
-import { LOG_KEYS, getLogger } from '@parity/shared/config';
-
+import { LOG_KEYS, getLogger } from '../../config';
 import UpgradeStore from '../../mobx/upgradeParity';
 import { isTestnet } from '../../util/testnet';
 
