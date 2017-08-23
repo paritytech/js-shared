@@ -20,7 +20,7 @@ import Contract from '@parity/api/contract';
 import { ERROR_CODES } from '@parity/api/transport/error';
 import { newError } from '@parity/ui/Errors/actions';
 
-import { wallet as WALLET_ABI } from '../../contracts/abi';
+import { foundationWallet as WALLET_ABI } from '../../contracts/abi';
 import WalletsUtils from '../../util/wallets';
 import { UPDATE_OWNERS, UPDATE_REQUIRE, UPDATE_DAILYLIMIT, UPDATE_TRANSACTIONS, UPDATE_CONFIRMATIONS } from '../../util/wallets/updates';
 
