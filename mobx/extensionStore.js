@@ -65,14 +65,17 @@ export default class Store {
 
   readStatus = () => {
     const hasExtension = Symbol.for('parity.extension') in window;
-    const ua = browser.analyze(navigator.userAgent || '');
 
     if (hasExtension) {
       this.setExtensionActive();
       return false;
     }
 
-    return (ua || {}).name.toLowerCase() === 'chrome';
+    const userAgent = navigator.userAgent || '';
+    const isChrome = (browser.analyze(userAgent) || {}).name.toLowerCase() === 'chrome';
+    const isElectron = userAgent.indexOf('Electron') !== -1;
+
+    return isChrome && !isElectron;
   }
 
   installExtension = () => {
