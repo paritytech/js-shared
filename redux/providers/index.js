@@ -25,6 +25,7 @@ export balancesReducer from './balancesReducer';
 export workerReducer from './workerReducer';
 export personalReducer from './personalReducer';
 export requestsReducer from './requestsReducer';
+export settingsReducer from './settings/reducers';
 export signerReducer from './signerReducer';
 export snackbarReducer from './snackbarReducer';
 export statusReducer from './statusReducer';
