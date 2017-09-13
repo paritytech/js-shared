@@ -18,13 +18,13 @@ export Balances from './balances';
 export Personal from './personal';
 export Signer from './signer';
 export Status from './status';
+export Tokens from './tokens';
 
 export apiReducer from './apiReducer';
 export balancesReducer from './balancesReducer';
 export workerReducer from './workerReducer';
 export personalReducer from './personalReducer';
 export requestsReducer from './requestsReducer';
-export settingsReducer from './settings/reducers';
 export signerReducer from './signerReducer';
 export snackbarReducer from './snackbarReducer';
 export statusReducer from './statusReducer';

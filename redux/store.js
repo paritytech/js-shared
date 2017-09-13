@@ -19,17 +19,17 @@ import { applyMiddleware, createStore } from 'redux';
 import initMiddleware from './middleware';
 import initReducers from './reducers';
 
-import { setApi } from './providers/apiActions';
-import { startCachingReverses } from './providers/registry/actions';
-import { init as initRequests } from './providers/requestsActions';
 import { load as loadWallet } from './providers/walletActions';
+import { init as initRequests } from './providers/requestsActions';
 import { setupWorker } from './providers/workerWrapper';
+import { setApi } from './providers/apiActions';
 
 import {
   Balances as BalancesProvider,
   Personal as PersonalProvider,
   Signer as SignerProvider,
-  Status as StatusProvider
+  Status as StatusProvider,
+  Tokens as TokensProvider
 } from './providers';
 
 const storeCreation = window.devToolsExtension
@@ -41,18 +41,56 @@ export default function (api, browserHistory, forEmbed = false) {
   const middleware = initMiddleware(api, browserHistory, forEmbed);
   const store = applyMiddleware(...middleware)(storeCreation)(reducers);
 
+  // Add the `api` to the Redux Store
+  store.dispatch({ type: 'initAll', api });
   store.dispatch(setApi(api));
 
-  BalancesProvider.instantiate(store, api);
-  StatusProvider.instantiate(store, api);
-  new PersonalProvider(store, api).start();
+  // Initialise the Store Providers
+  BalancesProvider.init(store);
+  PersonalProvider.init(store);
+  StatusProvider.init(store);
+  TokensProvider.init(store);
+
   new SignerProvider(store, api).start();
 
-  store.dispatch(startCachingReverses());
   store.dispatch(loadWallet(api));
   store.dispatch(initRequests(api));
-
   setupWorker(store);
+
+  const start = () => {
+    return Promise.resolve()
+      .then(() => console.log('starting Status Provider...'))
+      .then(() => StatusProvider.start())
+      .then(() => console.log('started Status Provider'))
+
+      .then(() => console.log('starting Personal Provider...'))
+      .then(() => PersonalProvider.start())
+      .then(() => console.log('started Personal Provider'))
+
+      .then(() => console.log('starting Balances Provider...'))
+      .then(() => BalancesProvider.start())
+      .then(() => console.log('started Balances Provider'))
+
+      .then(() => console.log('starting Tokens Provider...'))
+      .then(() => TokensProvider.start())
+      .then(() => console.log('started Tokens Provider'));
+  };
+
+  const stop = () => {
+    return StatusProvider.stop()
+      .then(() => PersonalProvider.stop())
+      .then(() => TokensProvider.stop())
+      .then(() => BalancesProvider.stop());
+  };
+
+  // On connecting, stop all subscriptions
+  api.on('connecting', stop);
+
+  // On connected, start the subscriptions
+  api.on('connected', start);
+
+  // On disconnected, stop all subscriptions
+  api.on('disconnected', stop);
 
   return store;
 }
