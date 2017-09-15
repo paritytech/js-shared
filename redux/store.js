@@ -92,5 +92,9 @@ export default function (api, browserHistory, forEmbed = false) {
   // On disconnected, stop all subscriptions
   api.on('disconnected', stop);
 
+  if (api.isConnected) {
+    start();
+  }
+
   return store;
 }
