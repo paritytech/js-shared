@@ -39,7 +39,6 @@ export default class Store {
 
   constructor () {
     this.nextDisplay = store.get(NEXT_DISPLAY) || 0;
-    this.testInstall();
   }
 
   @computed get showWarning () {
@@ -59,23 +58,31 @@ export default class Store {
     store.set(NEXT_DISPLAY, this.nextDisplay);
   }
 
-  @action testInstall = () => {
-    this.shouldInstall = this.readStatus();
+  @action setShouldInstall = (status) => {
+    this.shouldInstall = status;
+  }
+
+  testInstall = () => {
+    this.readStatus().then(this.setShouldInstall);
   }
 
   readStatus = () => {
-    const hasExtension = Symbol.for('parity.extension') in window;
+    return new Promise((resolve, reject) => {
+      // Defer checking for the extension since it may not have loaded yet.
+      setTimeout(() => {
+        const hasExtension = Symbol.for('parity.extension') in window;
+        const userAgent = navigator.userAgent || '';
+        const isChrome = (browser.analyze(userAgent) || {}).name.toLowerCase() === 'chrome';
+        const isElectron = userAgent.indexOf('Electron') !== -1;
 
-    if (hasExtension) {
-      this.setExtensionActive();
-      return false;
-    }
+        if (hasExtension) {
+          this.setExtensionActive();
+          return resolve(false);
+        }
 
-    const userAgent = navigator.userAgent || '';
-    const isChrome = (browser.analyze(userAgent) || {}).name.toLowerCase() === 'chrome';
-    const isElectron = userAgent.indexOf('Electron') !== -1;
-
-    return isChrome && !isElectron;
+        return resolve(isChrome && !isElectron);
+      }, 5000);
+    });
   }
 
   installExtension = () => {
