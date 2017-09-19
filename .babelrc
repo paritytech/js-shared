@@ -1,7 +1,8 @@
 {
   "presets": [
     "env",
-    "stage-0"
+    "stage-0",
+    "react"
   ],
   "plugins": [
     "transform-decorators-legacy",
@@ -11,5 +12,10 @@
   ],
   "retainLines": true,
   "env": {
+    "production": {
+      "plugins": [
+        "transform-react-remove-prop-types"
+      ]
+    }
   }
 }
