@@ -36,7 +36,7 @@
     "eslint-plugin-standard": "^3.0.1"
   },
   "dependencies": {
-    "@parity/ledger": "paritytech/js-ledger",
+    "@parity/ledger": "^2",
     "eventemitter3": "^2.0.3",
     "loglevel": "1.4.1",
     "mobx": "2.6.4",
