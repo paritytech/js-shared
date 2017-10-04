@@ -154,6 +154,12 @@ export default class Status {
       });
   }
 
+  _updateStatus = debounce(status => {
+    this._store.dispatch(statusCollection(status));
+  }, 2500, {
+    maxWait: 5000
+  });
+
   _subscribeEthSyncing = () => {
     return this._api.pubsub
       .eth
@@ -162,7 +168,7 @@ export default class Status {
           return;
         }
 
-        this._store.dispatch(statusCollection({ syncing }));
+        this._updateStatus({ syncing });
       });
   }
 
@@ -173,6 +179,7 @@ export default class Status {
         if (error || !netPeers) {
           return;
         }
+
         this._store.dispatch(statusCollection({ netPeers }));
       });
   }
