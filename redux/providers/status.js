@@ -14,7 +14,7 @@
 // You should have received a copy of the GNU General Public License
 // along with Parity.  If not, see <http://www.gnu.org/licenses/>.
 
-import { isEqual } from 'lodash';
+import { debounce, isEqual } from 'lodash';
 
 import { LOG_KEYS, getLogger } from '../../config';
 import UpgradeStore from '../../mobx/upgradeParity';
