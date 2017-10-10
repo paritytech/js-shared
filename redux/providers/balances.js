@@ -69,7 +69,7 @@ export default class Balances {
 
   static start () {
     if (!instance) {
-      return Promise.reject('BalancesProvider has not been initiated yet');
+      return Promise.reject(new Error('BalancesProvider has not been initiated yet'));
     }
 
     const self = instance;

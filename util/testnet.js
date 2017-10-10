@@ -16,9 +16,9 @@
 
 export function isTestnet (chainId) {
   return [
-    '2',  // morden
-    '3',  // ropsten,
+    '2', // morden
+    '3', // ropsten,
     '17', // devchain
-    '42'  // kovan
+    '42' // kovan
   ].includes(chainId);
 }

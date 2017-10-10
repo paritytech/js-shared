@@ -23,14 +23,14 @@ let WebWorker = null;
 
 try {
   PromiseWorker = require('promise-worker');
-  WebWorker = require('worker-loader!../../webWorker.js');
+  WebWorker = require('worker-loader!../../webWorker.js'); // eslint-disable-line
   runtime = require('serviceworker-webpack-plugin/lib/runtime');
 } catch (error) {
 }
 
 function setupServiceWorker () {
   if (!('serviceWorker' in navigator) || !runtime) {
-    return Promise.reject('ServiceWorker is not available in your browser.');
+    return Promise.reject(new Error('ServiceWorker is not available in your browser.'));
   }
 
   const getServiceWorker = () => {

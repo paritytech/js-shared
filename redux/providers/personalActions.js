@@ -81,7 +81,7 @@ export function personalAccountsInfo (accountsInfo) {
           .map((wallet, index) => {
             wallet.owners = walletsOwners[index].map((owner) => ({
               address: owner,
-              name: accountsInfo[owner] && accountsInfo[owner].name || owner
+              name: (accountsInfo[owner] && accountsInfo[owner].name) || owner
             }));
 
             return wallet;

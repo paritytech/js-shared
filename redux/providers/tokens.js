@@ -60,7 +60,7 @@ export default class Tokens {
 
   static start () {
     if (!instance) {
-      return Promise.reject('Tokens Provider has not been initiated yet');
+      return Promise.reject(new Error('Tokens Provider has not been initiated yet'));
     }
 
     const self = instance;

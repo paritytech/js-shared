@@ -55,16 +55,17 @@ export const findLastRequested = (contract, account) => {
 
 const blockNumber = (api) => {
   return new Promise((resolve, reject) => {
-    api.subscribe('eth_blockNumber', (err, block) => {
-      if (err) {
-        return reject(err);
-      }
-      resolve(block);
-    })
-    .then((subscription) => {
-      api.unsubscribe(subscription);
-    })
-    .catch(reject);
+    api
+      .subscribe('eth_blockNumber', (err, block) => {
+        if (err) {
+          return reject(err);
+        }
+        resolve(block);
+      })
+      .then((subscription) => {
+        api.unsubscribe(subscription);
+      })
+      .catch(reject);
   });
 };
 
