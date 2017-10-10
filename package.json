@@ -12,7 +12,13 @@
     "url": "git+https://github.com/paritytech/js-shared.git"
   },
   "keywords": [],
-  "scripts": {},
+  "scripts": {
+    "build": "echo \"WARN: npm run build skipped\"",
+    "lint": "npm run lint:css && npm run lint:js",
+    "lint:css": "stylelint ./src/**/*.css",
+    "lint:js": "eslint --ignore-path .gitignore ./src/",
+    "test": "echo \"WARN: npm run test skipped\""
+  },
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
