@@ -91,8 +91,7 @@ export function loadTokens (options = {}) {
   log.debug('loading tokens', Object.keys(options).length ? options : '');
 
   return (dispatch, getState) => {
-    const { api } = getState();
-    const { tokenReg } = Contracts.get(api);
+    const { tokenReg } = Contracts.get();
 
     return tokenReg.getContract()
       .then((tokenRegContract) => {
@@ -111,14 +110,16 @@ export function loadTokensBasics (_tokenIndexes, options) {
 
   return (dispatch, getState) => {
     const { api, tokens } = getState();
-    const { tokenReg } = Contracts.get(api);
+    const { tokenReg } = Contracts.get();
     const nextTokens = {};
     const prevTokensIndexes = Object.values(tokens).map((t) => t.index);
 
     // Only fetch tokens we don't have yet
-    const tokenIndexes = _tokenIndexes.filter((tokenIndex) => {
-      return !prevTokensIndexes.includes(tokenIndex);
-    });
+    const tokenIndexes = _tokenIndexes
+      .filter((tokenIndex) => {
+        return !prevTokensIndexes.includes(tokenIndex);
+      })
+      .sort();
 
     const count = tokenIndexes.length;
 
@@ -131,10 +132,15 @@ export function loadTokensBasics (_tokenIndexes, options) {
     return tokenReg.getContract()
       .then((tokenRegContract) => {
         let promise = Promise.resolve();
+        const first = tokenIndexes[0];
+        const last = tokenIndexes[tokenIndexes.length - 1];
 
-        for (let start = 0; start < count; start += limit) {
+        for (let from = first; from <= last; from += limit) {
+          // No need to fetch `limit` elements
+          const lowerLimit = Math.min(limit, last - from + 1);
+
           promise = promise
-            .then(() => fetchTokensBasics(api, tokenRegContract, start, limit))
+            .then(() => fetchTokensBasics(api, tokenRegContract, from, lowerLimit))
             .then((results) => {
               results
                 .forEach((token) => {
@@ -161,8 +167,7 @@ export function fetchTokens (_tokenIndexes) {
   const tokenChunks = chunk(tokenIndexes, 64);
 
   return (dispatch, getState) => {
-    const { api } = getState();
-    const { tokenReg } = Contracts.get(api);
+    const { tokenReg } = Contracts.get();
 
     return tokenReg.getContract()
       .then((tokenRegContract) => {
@@ -192,9 +197,8 @@ export function fetchTokens (_tokenIndexes) {
  */
 function fetchTokensData (tokenRegContract, tokenIndexes) {
   return (dispatch, getState) => {
-    const { api, tokens } = getState();
+    const { api, tokens, images } = getState();
     const allTokens = Object.values(tokens);
-    const iconCache = IconCache.get();
 
     const tokensIndexesMap = allTokens
       .reduce((map, token) => {
@@ -240,8 +244,8 @@ function fetchTokensData (tokenRegContract, tokenIndexes) {
             const { id, image, address } = token;
 
             // dispatch only the changed images
-            if (iconCache.images[address] !== image) {
-              iconCache.add(address, image, true);
+            if (images[address] !== image) {
+              dispatch(setAddressImage(address, image, true));
             }
 
             tokens[id] = token;

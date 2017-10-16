@@ -30,3 +30,4 @@ export registry2 from './registry2.json';
 export signaturereg from './signaturereg.json';
 export smsverification from './sms-verification.json';
 export tokenreg from './tokenreg.json';
+export vouchfor from './vouchfor.json';
