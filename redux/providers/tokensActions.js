@@ -239,14 +239,10 @@ function fetchTokensData (tokenRegContract, tokenIndexes) {
       .then(([ fullResults, partialResults ]) => {
         log.debug('fetched', { fullResults, partialResults });
 
-        return [].concat(fullResults, partialResults)
+        return []
+          .concat(fullResults, partialResults)
           .reduce((tokens, token) => {
-            const { id, image, address } = token;
-
-            // dispatch only the changed images
-            if (images[address] !== image) {
-              dispatch(setAddressImage(address, image, true));
-            }
+            const { id } = token;
 
             tokens[id] = token;
             return tokens;
