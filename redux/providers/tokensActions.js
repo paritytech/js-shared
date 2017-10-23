@@ -17,7 +17,7 @@
 import { chunk, uniq } from 'lodash';
 import store from 'store';
 
-import { IconCache } from '@parity/ui';
+// import { IconCache } from '@parity/ui';
 
 import { LOG_KEYS, getLogger } from '../../config';
 import Contracts from '../../contracts';
@@ -197,7 +197,7 @@ export function fetchTokens (_tokenIndexes) {
  */
 function fetchTokensData (tokenRegContract, tokenIndexes) {
   return (dispatch, getState) => {
-    const { api, tokens, images } = getState();
+    const { api, tokens } = getState();
     const allTokens = Object.values(tokens);
 
     const tokensIndexesMap = allTokens

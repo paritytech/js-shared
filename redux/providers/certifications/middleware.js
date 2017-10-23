@@ -14,8 +14,6 @@
 // You should have received a copy of the GNU General Public License
 // along with Parity.  If not, see <http://www.gnu.org/licenses/>.
 
-import Contract from '@parity/api/contract';
-
 import Monitor from './certifiers.monitor';
 
 export default class CertificationsMiddleware {
