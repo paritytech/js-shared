@@ -25,10 +25,10 @@ import viewsJson from '../config/dappsViews.json';
 import Contracts from '../contracts';
 
 const builtinApps = [].concat(
-  viewsJson.map((app) => {
-    app.isView = true;
-    return app;
-  }),
+  // viewsJson.map((app) => {
+  //   app.isView = true;
+  //   return app;
+  // }),
   builtinJson.filter((app) => app.id)
 );
 
