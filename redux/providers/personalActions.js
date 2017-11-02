@@ -16,7 +16,7 @@
 
 import { isEqual, intersection } from 'lodash';
 
-import Contract from '@parity/api/contract';
+import Contract from '@parity/api/lib/contract';
 
 import { foundationWallet as WalletAbi } from '../../contracts/abi';
 import WalletsUtils from '../../util/wallets';

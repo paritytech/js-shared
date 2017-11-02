@@ -16,7 +16,7 @@
 
 import * as actions from './signerActions';
 
-import { inHex } from '@parity/api/format/input';
+import { inHex } from '@parity/api/lib/format/input';
 
 import HardwareStore from '../../mobx/hardwareStore';
 import { Signer } from '../../util/signer';

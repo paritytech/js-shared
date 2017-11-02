@@ -17,7 +17,7 @@
 import { difference, uniq } from 'lodash';
 import { push } from 'react-router-redux';
 
-import { sha3 } from '@parity/api/util/sha3';
+import { sha3 } from '@parity/api/lib/util/sha3';
 import { LOG_KEYS, getLogger } from '../../config';
 import { notifyTransaction } from '../../util/notifications';
 import { ETH_TOKEN, fetchAccountsBalances } from '../../util/tokens';

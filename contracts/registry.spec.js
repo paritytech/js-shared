@@ -18,7 +18,7 @@
 
 import sinon from 'sinon';
 
-import apiutil from '@parity/api/util';
+import apiutil from '@parity/api/lib/util';
 
 import Registry from './registry';
 

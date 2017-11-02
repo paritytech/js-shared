@@ -16,8 +16,8 @@
 
 import { range } from 'lodash';
 
-import Contract from '@parity/api/contract';
-import { bytesToHex, hexToAscii } from '@parity/api/util/format';
+import Contract from '@parity/api/lib/contract';
+import { bytesToHex, hexToAscii } from '@parity/api/lib/util/format';
 
 import { getLogger, LOG_KEYS } from '../../../config';
 import Contracts from '../../../contracts';
