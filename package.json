@@ -1,7 +1,7 @@
 {
   "name": "@parity/shared",
   "description": "Shared states and non-ui components for the Parity wallet",
-  "version": "2.1.1",
+  "version": "2.1.2",
   "main": "index.js",
   "author": "Parity Team <admin@parity.io>",
   "maintainers": [],
