@@ -7,15 +7,7 @@
   "plugins": [
     "transform-decorators-legacy",
     "transform-class-properties",
-    "transform-object-rest-spread",
-    "transform-es2015-modules-commonjs"
+    "transform-object-rest-spread"
   ],
-  "retainLines": true,
-  "env": {
-    "production": {
-      "plugins": [
-        "transform-react-remove-prop-types"
-      ]
-    }
-  }
+  "retainLines": true
 }
