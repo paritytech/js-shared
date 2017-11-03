@@ -13,7 +13,7 @@
   },
   "keywords": [],
   "scripts": {
-    "build": "rm -rf lib && babel src --out-dir lib --ignore *.spec.js",
+    "build": "rm -rf lib && babel src --out-dir lib --ignore *.spec.js --copy-files",
     "lint": "npm run lint:css && npm run lint:js",
     "lint:css": "echo \"WARN: npm run lint:css skipped\"",
     "lint:js": "eslint src",
