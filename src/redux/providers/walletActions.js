@@ -18,7 +18,7 @@ import { isEqual, uniq } from 'lodash';
 
 import Contract from '@parity/api/lib/contract';
 import { ERROR_CODES } from '@parity/api/lib/transport/error';
-import { newError } from '@parity/ui/Errors/actions';
+import { newError } from '@parity/ui/lib/Errors/actions';
 
 import { foundationWallet as WALLET_ABI } from '../../contracts/abi';
 import WalletsUtils from '../../util/wallets';

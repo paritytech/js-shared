@@ -26,7 +26,7 @@ import TokensProvider from './tokens';
 import { updateTokensFilter } from './balancesActions';
 import { attachWallets } from './walletActions';
 
-import MethodDecodingStore from '@parity/ui/MethodDecoding/methodDecodingStore';
+import MethodDecodingStore from '@parity/ui/lib/MethodDecoding/methodDecodingStore';
 
 export function personalAccountsInfo (accountsInfo) {
   const accounts = {};

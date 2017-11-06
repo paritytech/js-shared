@@ -26,7 +26,7 @@ import {
 import certificationsReducer from './providers/certifications/reducer';
 import registryReducer from './providers/registry/reducer';
 
-import errorReducer from '@parity/ui/Errors/reducers';
+import errorReducer from '@parity/ui/lib/Errors/reducers';
 
 export default function () {
   return combineReducers({
