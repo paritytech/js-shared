@@ -6,7 +6,7 @@
     "name": "Default dapp accounts",
     "package": "@parity/dapp-dapp-accounts",
     "description": "Allow setting of accounts to use by default for dapps",
-    "author": "Parity Team <admin@ethcore.io>",
+    "author": "Parity Team <admin@parity.io>",
     "version": "2.0.0",
     "visible": true
   },
@@ -17,7 +17,7 @@
     "name": "Dapp Method Permissions",
     "package": "@parity/dapp-dapp-methods",
     "description": "Allow setting of dapp permissions on a per method level",
-    "author": "Parity Team <admin@ethcore.io>",
+    "author": "Parity Team <admin@parity.io>",
     "version": "2.0.0",
     "visible": true
   },
@@ -28,7 +28,7 @@
     "name": "Dapp Visibility",
     "package": "@parity/dapp-dapp-visible",
     "description": "Allow setting of visible dapps",
-    "author": "Parity Team <admin@ethcore.io>",
+    "author": "Parity Team <admin@parity.io>",
     "version": "2.0.0",
     "visible": true
   },
@@ -39,7 +39,7 @@
     "name": "Web",
     "package": "@parity/dapp-web",
     "description": "Embed dapps loaded from the web into the Parity shell",
-    "author": "Parity Team <admin@ethcore.io>",
+    "author": "Parity Team <admin@parity.io>",
     "version": "2.0.0",
     "visible": true,
     "noselect": true
