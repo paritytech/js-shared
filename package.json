@@ -14,6 +14,7 @@
   "keywords": [],
   "scripts": {
     "build": "rm -rf lib && babel src --out-dir lib --ignore *.spec.js --copy-files",
+    "ci:makeshift": "makeshift",
     "lint": "npm run lint:css && npm run lint:js",
     "lint:css": "echo \"WARN: npm run lint:css skipped\"",
     "lint:js": "eslint src",
@@ -39,7 +40,8 @@
     "eslint-plugin-node": "^5.1.1",
     "eslint-plugin-promise": "^3.5.0",
     "eslint-plugin-react": "^7.1.0",
-    "eslint-plugin-standard": "^3.0.1"
+    "eslint-plugin-standard": "^3.0.1",
+    "makeshift": "^1.1.0"
   },
   "dependencies": {
     "@parity/ledger": "2.1.x",
