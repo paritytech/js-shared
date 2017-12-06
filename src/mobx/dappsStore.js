@@ -313,7 +313,7 @@ export default class DappsStore extends EventEmitter {
 
   getAppById = (id) => {
     return this.apps.find((app) => {
-      const appId = this._api.util.isHex(appId)
+      const appId = this._api.util.isHex(app.id)
         ? app.id
         : this._api.util.sha3(app.id);
 
