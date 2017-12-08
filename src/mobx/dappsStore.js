@@ -220,7 +220,7 @@ export default class DappsStore extends EventEmitter {
             .fetchRegistryApp(dappReg, appId)
             .then((app) => {
               if (app) {
-                this.addApps([ app ]);
+                this.addApps([app]);
               }
 
               return app;
@@ -263,12 +263,22 @@ export default class DappsStore extends EventEmitter {
   }
 
   @action hideApp = (id) => {
-    this.setDisplayApps({ [id]: { visible: false } });
+    this.setDisplayApps({ [id]: { ...this.displayApps[id], visible: false } });
     this.writeDisplayApps();
   }
 
   @action showApp = (id) => {
-    this.setDisplayApps({ [id]: { visible: true } });
+    this.setDisplayApps({ [id]: { ...this.displayApps[id], visible: true } });
+    this.writeDisplayApps();
+  }
+
+  @action pinApp = (id) => {
+    this.setDisplayApps({ [id]: { ...this.displayApps[id], pinned: true } });
+    this.writeDisplayApps();
+  }
+
+  @action unpinApp = (id) => {
+    this.setDisplayApps({ [id]: { ...this.displayApps[id], pinned: false } });
     this.writeDisplayApps();
   }
 
