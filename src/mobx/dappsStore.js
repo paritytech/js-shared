@@ -93,6 +93,10 @@ export default class DappsStore extends EventEmitter {
     return this.visibleApps.filter((app) => !app.noselect && app.type === 'view');
   }
 
+  @computed get pinnedApps () {
+    return this.apps.filter((app) => this.displayApps[app.id] && this.displayApps[app.id].pinned);
+  }
+
   /**
    * Try to find the app from the local (local or builtin)
    * apps, else fetch from the node
@@ -263,7 +267,7 @@ export default class DappsStore extends EventEmitter {
   }
 
   @action hideApp = (id) => {
-    this.setDisplayApps({ [id]: { ...this.displayApps[id], visible: false } });
+    this.setDisplayApps({ [id]: { ...this.displayApps[id], visible: false, pinned: false } }); // Unpin app when we hide it
     this.writeDisplayApps();
   }
 
@@ -273,7 +277,7 @@ export default class DappsStore extends EventEmitter {
   }
 
   @action pinApp = (id) => {
-    this.setDisplayApps({ [id]: { ...this.displayApps[id], pinned: true } });
+    this.setDisplayApps({ [id]: { ...this.displayApps[id], visible: true, pinned: true } }); // Make app visible when pinning it (should already be)
     this.writeDisplayApps();
   }
 
