@@ -1,6 +1,6 @@
 [
   {
-    "id": "dappAccounts",
+    "id": "0x7ce03beb694a3a75f99829d84e96456c50773bb99d79f1676155b9eb55d8434e",
     "url": "dappAccounts",
     "src": "DappAccounts",
     "name": "Default dapp accounts",
@@ -11,7 +11,7 @@
     "visible": true
   },
   {
-    "id": "dappMethods",
+    "id": "0x889d3403834b4ef359448575dcd6d77334330edaecc66a77051483f3a498ab6e",
     "url": "dappMethods",
     "src": "DappMethods",
     "name": "Dapp Method Permissions",
@@ -22,7 +22,7 @@
     "visible": true
   },
   {
-    "id": "dappVisible",
+    "id": "0xa48bd8fd56c90c899135281967a6cf90865c221b46f27f9fbe2a236d74a64ea2",
     "url": "dappVisible",
     "src": "DappVisible",
     "name": "Dapp Visibility",
