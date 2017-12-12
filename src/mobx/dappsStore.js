@@ -295,7 +295,23 @@ export default class DappsStore extends EventEmitter {
   }
 
   @action readDisplayApps = () => {
-    this.displayApps = store.get(LS_KEY_DISPLAY) || {};
+    const visibility = store.get(LS_KEY_DISPLAY) || {};
+
+    // FIXME Very Ugly
+    // Right now we hardcode so that the wallet and the Browse Dapps dapp are
+    // pinned by default when the user launches for the first time.
+    // TODO Find a way to make this cleaner. -Amaury 12/12/2017
+    const WALLET_ID = 'v1';
+    const DAPP_DAPP_VISIBLE_ID = '0xa48bd8fd56c90c899135281967a6cf90865c221b46f27f9fbe2a236d74a64ea2';
+
+    if (!visibility[WALLET_ID] || visibility[WALLET_ID].pinned === undefined) {
+      visibility[WALLET_ID] = { visible: true, pinned: true };
+    }
+    if (!visibility[DAPP_DAPP_VISIBLE_ID] || visibility[DAPP_DAPP_VISIBLE_ID].pinned === undefined) {
+      visibility[DAPP_DAPP_VISIBLE_ID] = { visible: true, pinned: true };
+    }
+
+    this.displayApps = visibility;
   }
 
   @action writeDisplayApps = () => {
