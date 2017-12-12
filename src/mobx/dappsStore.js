@@ -97,6 +97,14 @@ export default class DappsStore extends EventEmitter {
     return this.apps.filter((app) => this.displayApps[app.id] && this.displayApps[app.id].pinned);
   }
 
+  @computed get visibleUnpinned () {
+    return this.apps.filter((app) =>
+      this.displayApps[app.id] &&
+      this.displayApps[app.id].visible &&
+      !this.displayApps[app.id].pinned
+    );
+  }
+
   /**
    * Try to find the app from the local (local or builtin)
    * apps, else fetch from the node
