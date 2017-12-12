@@ -31,17 +31,5 @@
     "author": "Parity Team <admin@parity.io>",
     "version": "2.0.0",
     "visible": true
-  },
-  {
-    "id": "web",
-    "url": "web",
-    "src": "Web",
-    "name": "Web",
-    "package": "@parity/dapp-web",
-    "description": "Embed dapps loaded from the web into the Parity shell",
-    "author": "Parity Team <admin@parity.io>",
-    "version": "2.0.0",
-    "visible": true,
-    "noselect": true
   }
 ]
