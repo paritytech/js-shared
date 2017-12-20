@@ -89,11 +89,11 @@ export default class Status {
 
     self._clearTimeouts();
 
+    self.updateApiStatus();
     return self._unsubscribeBlockNumber()
       .catch((error) => {
         console.error('status::stop', error);
-      })
-      .then(() => self.updateApiStatus());
+      });
   }
 
   getApiStatus = () => {
