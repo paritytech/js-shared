@@ -48,10 +48,9 @@ export default function (api, browserHistory, forEmbed = false) {
   // Initialise the Store Providers
   BalancesProvider.init(store);
   PersonalProvider.init(store);
+  SignerProvider.init(store);
   StatusProvider.init(store);
   TokensProvider.init(store);
-
-  new SignerProvider(store, api).start();
 
   store.dispatch(loadWallet(api));
   store.dispatch(initRequests(api));
@@ -59,6 +58,10 @@ export default function (api, browserHistory, forEmbed = false) {
 
   const start = () => {
     return Promise.resolve()
+      .then(() => console.log('starting Signer Provider...'))
+      .then(() => SignerProvider.start())
+      .then(() => console.log('started Signer Provider'))
+
       .then(() => console.log('starting Status Provider...'))
       .then(() => StatusProvider.start())
       .then(() => console.log('started Status Provider'))
@@ -80,7 +83,8 @@ export default function (api, browserHistory, forEmbed = false) {
     return StatusProvider.stop()
       .then(() => PersonalProvider.stop())
       .then(() => TokensProvider.stop())
-      .then(() => BalancesProvider.stop());
+      .then(() => BalancesProvider.stop())
+      .then(() => SignerProvider.stop());
   };
 
   // On connecting, stop all subscriptions
