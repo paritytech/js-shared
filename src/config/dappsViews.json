@@ -31,5 +31,16 @@
     "author": "Parity Team <admin@parity.io>",
     "version": "2.0.0",
     "visible": true
+  },
+  {
+    "id": "0xcd423760c9650eb549b1615f6cf96d420e32aadcea2ff5fe11c26457244adcc1",
+    "url": "status",
+    "src": "Status",
+    "name": "Node Status",
+    "package": "@parity/dapp-status",
+    "description": "Check the status of your Parity node",
+    "author": "Parity Team <admin@parity.io>",
+    "version": "2.0.1",
+    "visible": true
   }
 ]
