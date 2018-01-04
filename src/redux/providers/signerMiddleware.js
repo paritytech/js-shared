@@ -196,7 +196,7 @@ export default class SignerMiddleware {
   }
 
   onRejectStart = (store, action) => {
-    const id = action.payload;
+    const { id } = action.payload;
 
     return this._api.signer
       .rejectRequest(id)
