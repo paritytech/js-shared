@@ -16,6 +16,8 @@
 
 import { signerRequestsToConfirm } from './signerActions';
 
+let instance = null;
+
 export default class Signer {
   constructor (store, api) {
     this._api = api;
@@ -27,13 +29,44 @@ export default class Signer {
   }
 
   _subscribeRequestsToConfirm () {
-    this._api
-      .subscribe('signer_requestsToConfirm', (error, pending) => {
-        if (error) {
-          return;
-        }
+    const callback = (error, pending) => {
+      if (error) {
+        return;
+      }
 
-        this._store.dispatch(signerRequestsToConfirm(pending || []));
+      this._store.dispatch(signerRequestsToConfirm(pending || []));
+    };
+
+    // FIXME: Something weird is going on in the API with pending requests - it should return the initial value immediately
+    this._api
+      .subscribe('signer_requestsToConfirm', callback)
+      .then(() => this._api.signer.requestsToConfirm())
+      .then((pending) => callback(null, pending));
+  }
+
+  static init (store) {
+    const { api } = store.getState();
+
+    if (!instance) {
+      instance = new Signer(store, api);
+    }
+
+    return instance;
+  }
+
+  static start () {
+    if (!instance) {
+      return Promise.reject(new Error('SignerProvider has not been initiated yet'));
+    }
+
+    return Signer
+      .stop()
+      .then(() => {
+        instance.start();
       });
+  }
+
+  static stop () {
+    return Promise.resolve();
   }
 }
