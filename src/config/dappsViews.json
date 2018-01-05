@@ -1,16 +1,5 @@
 [
   {
-    "id": "0x7ce03beb694a3a75f99829d84e96456c50773bb99d79f1676155b9eb55d8434e",
-    "url": "dappAccounts",
-    "src": "DappAccounts",
-    "name": "Default dapp accounts",
-    "package": "@parity/dapp-dapp-accounts",
-    "description": "Allow setting of accounts to use by default for dapps",
-    "author": "Parity Team <admin@parity.io>",
-    "version": "2.0.0",
-    "visible": true
-  },
-  {
     "id": "0x889d3403834b4ef359448575dcd6d77334330edaecc66a77051483f3a498ab6e",
     "url": "dappMethods",
     "src": "DappMethods",
